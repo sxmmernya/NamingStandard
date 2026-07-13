@@ -163,7 +163,7 @@ end)
 test("getcallingscript", {})
 
 test("getscriptclosure", {"getscriptfunction"}, function()
-	local module = game:GetService("CoreGui").RobloxGui.Modules.Common.Constants
+	local module = game:GetService("CoreGui").RobloxGui.Modules.DevConsole.Constants
 	local constants = getrenv().require(module)
 	local generated = getscriptclosure(module)()
 	assert(constants ~= generated, "Generated module should not match the original")
@@ -360,7 +360,8 @@ test("debug.getprotos", {}, function()
 end)
 
 test("debug.getstack", {}, function()
-	local _ = "a" .. "b"
+	local _ = "a"
+	_ = _ .. 'b'
 	assert(debug.getstack(1, 1) == "ab", "The first item in the stack should be 'ab'")
 	assert(debug.getstack(1)[1] == "ab", "The first item in the stack table should be 'ab'")
 end)
